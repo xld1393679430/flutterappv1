@@ -4,6 +4,7 @@ import 'package:flutterapp/demo/less_group_page.dart';
 import 'demo/gesture_page.dart';
 import 'demo/layout.dart';
 import 'demo/plugin_use.dart';
+import 'demo/resource_page.dart';
 import 'demo/statefull_group_page.dart';
 
 void main() {
@@ -61,6 +62,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item("plugin使用", 'usePlugin', PluginUsePage()),
           _item("布局", 'layout', Layout()),
           _item("手势", 'gesTure', GesTurePage()),
+          _item("资源使用", 'resourcePage', ResourcePage()),
         ],
       ),
     );
