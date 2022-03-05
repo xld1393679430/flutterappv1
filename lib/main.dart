@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterapp/demo/less_group_page.dart';
 
 import 'demo/gesture_page.dart';
+import 'demo/launch_page.dart';
 import 'demo/layout.dart';
 import 'demo/plugin_use.dart';
 import 'demo/resource_page.dart';
@@ -31,6 +32,9 @@ class MyApp extends StatelessWidget {
         "fulState": (BuildContext context) => StateFullGroupPage(),
         "usePlugin": (BuildContext context) => PluginUsePage(),
         "layout": (BuildContext context) => Layout(),
+        "gesTure": (BuildContext context) => GesTurePage(),
+        "resourcePage": (BuildContext context) => ResourcePage(),
+        "launchPage": (BuildContext context) => LaunchPage(),
       },
     );
   }
@@ -63,6 +67,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item("布局", 'layout', Layout()),
           _item("手势", 'gesTure', GesTurePage()),
           _item("资源使用", 'resourcePage', ResourcePage()),
+          // _item("打开第三方应用", 'launchPage', LaunchPage()),
         ],
       ),
     );
