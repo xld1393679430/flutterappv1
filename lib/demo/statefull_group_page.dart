@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class StateFullGroup extends StatefulWidget {
+class StateFullGroupPage extends StatefulWidget {
   @override
-  _StateFullGroupState createState() => _StateFullGroupState();
+  _StateFullGroupPage createState() => _StateFullGroupPage();
 }
 
-class _StateFullGroupState extends State<StateFullGroup> {
+class _StateFullGroupPage extends State<StateFullGroupPage> {
   int _currentIndex = 0;
 
   @override
@@ -17,7 +17,15 @@ class _StateFullGroupState extends State<StateFullGroup> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-          appBar: AppBar(title: Text("StatefulWidget与基础组件")),
+          appBar: AppBar(
+            title: Text("StatefulWidget与基础组件"),
+            leading: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Icon(Icons.arrow_back),
+            ),
+          ),
           bottomNavigationBar: BottomNavigationBar(
             currentIndex: _currentIndex,
             onTap: (index) {

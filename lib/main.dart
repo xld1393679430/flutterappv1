@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutterapp/demo/less_group_page.dart';
 
+import 'demo/gesture_page.dart';
 import 'demo/layout.dart';
+import 'demo/plugin_use.dart';
+import 'demo/statefull_group_page.dart';
 
 void main() {
-  runApp(Layout());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -15,54 +19,66 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Flutter"),
+        ),
+        body: RouterNavigator(),
+      ),
+      routes: <String, WidgetBuilder>{
+        "lessState": (BuildContext context) => LessGroupPage(),
+        "fulState": (BuildContext context) => StateFullGroupPage(),
+        "usePlugin": (BuildContext context) => PluginUsePage(),
+        "layout": (BuildContext context) => Layout(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class RouterNavigator extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _RouterNavigatorState createState() => _RouterNavigatorState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class _RouterNavigatorState extends State<RouterNavigator> {
+  bool navTypeByName = false;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+    return Container(
+      child: Column(
+        children: [
+          SwitchListTile(
+              title: Text("${navTypeByName ? '' : '不'}通过路由名字跳转"),
+              value: navTypeByName,
+              onChanged: (value) {
+                setState(() {
+                  navTypeByName = value;
+                });
+              }),
+          _item("无状态Widget", 'lessState', LessGroupPage()),
+          _item("有状态Widget", 'fulState', StateFullGroupPage()),
+          _item("plugin使用", 'usePlugin', PluginUsePage()),
+          _item("布局", 'layout', Layout()),
+          _item("手势", 'gesTure', GesTurePage()),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+    );
+  }
+
+  _item(String title, String routeName, page) {
+    return Container(
+      child: RaisedButton(
+        onPressed: () {
+          if (navTypeByName) {
+            Navigator.pushNamed(context, routeName);
+          } else {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => page));
+          }
+        },
+        child: Text(title),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
