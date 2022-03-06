@@ -74,3 +74,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: KingnamMaiyuan
+      fonts:
+        - asset: fonts/Kingnam-Maiyuan-2.otf
+    - family: ChuangKeTieJinGangTi
+      fonts:
+        - asset: fonts/ChuangKeTieJinGangTi-2.otf
+
+

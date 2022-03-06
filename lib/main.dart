@@ -27,6 +27,7 @@ class _DynamicThemeState extends State<DynamicTheme> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: "KingnamMaiyuan", // 全局字体
         brightness: _brightness,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -45,7 +46,13 @@ class _DynamicThemeState extends State<DynamicTheme> {
                       : Brightness.light;
                 });
               },
-              child: Text("切换主题"),
+              child: Text(
+                "切换主题",
+                style: TextStyle(
+                  fontSize: 30,
+                  fontFamily: "ChuangKeTieJinGangTi", // 局部字体
+                ),
+              ),
             ),
             RouterNavigator()
           ],
