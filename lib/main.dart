@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapp/demo/less_group_page.dart';
 
 import 'demo/app_lifecycle.dart';
 import 'demo/gesture_page.dart';
 import 'demo/launch_page.dart';
 import 'demo/layout.dart';
+import 'demo/less_group_page.dart';
 import 'demo/plugin_use.dart';
 import 'demo/resource_page.dart';
 import 'demo/statefull_group_page.dart';
 import 'demo/widget_lifecycle.dart';
+import 'photoApp/photo_app.dart';
 
 void main() {
   runApp(DynamicTheme());
@@ -68,6 +69,7 @@ class _DynamicThemeState extends State<DynamicTheme> {
         "launchPage": (BuildContext context) => LaunchPage(),
         "widgetLifeCyclePage": (BuildContext context) => WidgetLifeCyclePage(),
         "appLifecyclePage": (BuildContext context) => AppLifecyclePage(),
+        "photoApp": (BuildContext context) => PhotoApp(),
       },
     );
   }
@@ -102,7 +104,8 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item("资源使用", 'resourcePage', ResourcePage()),
           // _item("打开第三方应用", 'launchPage', LaunchPage()),
           _item("页面的生命周期", 'widgetLifeCycle', WidgetLifeCyclePage()),
-          _item("应用的生命周期", 'flutter应用的生命周期', AppLifecyclePage()),
+          _item("应用的生命周期", 'appLifecyclePage', AppLifecyclePage()),
+          _item("拍照App", 'photoApp', PhotoApp()),
         ],
       ),
     );
