@@ -102,7 +102,7 @@ class _RouterNavigatorState extends State<RouterNavigator> {
           _item("布局", 'layout', Layout()),
           _item("手势", 'gesTure', GesTurePage()),
           _item("资源使用", 'resourcePage', ResourcePage()),
-          // _item("打开第三方应用", 'launchPage', LaunchPage()),
+          _item("打开第三方应用", 'launchPage', LaunchPage()),
           _item("页面的生命周期", 'widgetLifeCycle', WidgetLifeCyclePage()),
           _item("应用的生命周期", 'appLifecyclePage', AppLifecyclePage()),
           _item("拍照App", 'photoApp', PhotoApp()),
