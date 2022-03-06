@@ -11,15 +11,23 @@ import 'demo/statefull_group_page.dart';
 import 'demo/widget_lifecycle.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(DynamicTheme());
 }
 
-class MyApp extends StatelessWidget {
+class DynamicTheme extends StatefulWidget {
+  @override
+  State<DynamicTheme> createState() => _DynamicThemeState();
+}
+
+// 动态切换主题
+class _DynamicThemeState extends State<DynamicTheme> {
+  Brightness _brightness = Brightness.light;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        brightness: _brightness,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
@@ -27,7 +35,21 @@ class MyApp extends StatelessWidget {
         appBar: AppBar(
           title: Text("Flutter"),
         ),
-        body: RouterNavigator(),
+        body: Column(
+          children: [
+            RaisedButton(
+              onPressed: () {
+                setState(() {
+                  _brightness = _brightness == Brightness.light
+                      ? Brightness.dark
+                      : Brightness.light;
+                });
+              },
+              child: Text("切换主题"),
+            ),
+            RouterNavigator()
+          ],
+        ),
       ),
       routes: <String, WidgetBuilder>{
         "lessState": (BuildContext context) => LessGroupPage(),
